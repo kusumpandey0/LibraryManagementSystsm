@@ -23,6 +23,7 @@ const Card = ({ book }) => {
           <p className="text-gray-700 text-base">Rs. {book.bookPrice}</p>
           <p className="text-black-700 text-base">{book.authorName}</p>
           <p className="text-black-700 text-base">{book.isbnNumber}</p>
+          <p className="text-red-700 text-base">{book.publishedAt}</p>
           <button className="bg-blue-500 rounded-xl cursor-pointer px-2 text-amber-50">
             <Link to={`/book/${book._id}`}>See More</Link>
           </button>

@@ -109,7 +109,12 @@ app.patch("/book/:id", upload.single("image"), async (req, res) => {
   } = req.body;
   const oldDatas = await Book.findById(id);
   DeleteFromFolder(req.file, oldDatas, "update");
-  const fileName = "http://localhost:3000/" + req.file.filename;
+  let fileName;
+  if (req.file) {
+    fileName = "http://localhost:3000/" + req.file.filename;
+  } else {
+    fileName = oldDatas.imageUrl; // Keep old image if no new one is uploaded
+  }
   await Book.findByIdAndUpdate(id, {
     bookName,
     bookPrice,
